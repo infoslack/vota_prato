@@ -10,7 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110313090902) do
+ActiveRecord::Schema.define(:version => 20110313095904) do
+
+  create_table "clientes", :force => true do |t|
+    t.string   "nome",       :limit => 80
+    t.integer  "idade"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "restaurantes", :force => true do |t|
     t.string   "nome",          :limit => 80
