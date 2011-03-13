@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110313101145) do
+ActiveRecord::Schema.define(:version => 20110313101902) do
 
   create_table "clientes", :force => true do |t|
     t.string   "nome",       :limit => 80
@@ -24,6 +24,18 @@ ActiveRecord::Schema.define(:version => 20110313101145) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "qualificacoes", :force => true do |t|
+    t.integer  "cliente_id"
+    t.integer  "restaurante_id"
+    t.float    "nota"
+    t.float    "valor_gasto"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "qualificacoes", ["cliente_id"], :name => "index_qualificacoes_on_cliente_id"
+  add_index "qualificacoes", ["restaurante_id"], :name => "index_qualificacoes_on_restaurante_id"
 
   create_table "receita", :force => true do |t|
     t.integer  "prato_id"
