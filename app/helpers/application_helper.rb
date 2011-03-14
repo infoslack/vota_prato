@@ -8,4 +8,8 @@ module ApplicationHelper
 		menu_principal << "</ul>"
 		raw menu_principal
 	end
+
+	def valor_formatado(number)
+		number_to_currency(number, :unit => "R$", :separator => ",", :delimiter => ".")
+	end
 end
