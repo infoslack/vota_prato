@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Cliente < ActiveRecord::Base
 	validates_presence_of :nome, :message => " - deve ser preenchido"
 
