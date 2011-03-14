@@ -12,18 +12,24 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :cliente_id %><br />
-    <%= f.collection_select(:cliente_id,
-	    Cliente.order('nome'),
-	    :id ,:nome, {:prompt => true}) 
-    %>
+
+  <% if @qualificacao.cliente %>
+	<%= f.hidden_field 'cliente_id' %>
+	<% else %>
+	<%= f.label :cliente_id %><br />
+	<%= f.collection_select(:cliente_id, Cliente.order('nome'), :id ,:nome, {:prompt => true}) %>
+  <% end %>
+
   </div>
   <div class="field">
-    <%= f.label :restaurante_id %><br />
-    <%= f.collection_select(:restaurante_id, 
-	    Restaurante.order('nome'), 
-	    :id, :nome, {:prompt => true}) 
-    %>
+
+  <% if @qualificacao.restaurante %>
+  <%= f.hidden_field 'restaurante_id' %>
+  <% else %>
+  <%= f.label :restaurante_id %><br />
+  <%= f.collection_select(:restaurante_id, Restaurante.order('nome'), :id, :nome, {:prompt => true}) %>
+  <% end %>
+
   </div>
   <div class="field">
     <%= f.label :nota %><br />
