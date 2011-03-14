@@ -27,11 +27,11 @@ class QualificacoesController < ApplicationController
     @qualificacao = Qualificacao.new
 
     if params[:cliente]
-	    @qualificacao.cliente = Cliente.find(params[:cliente])
+      @qualificacao.cliente = Cliente.find(params[:cliente])
     end
 
     if params[:restaurante]
-	    @qualificacao.restaurante = Restaurante.find(params[:restaurante])
+      @qualificacao.restaurante = Restaurante.find[:restaurante]
     end
 
     respond_to do |format|
@@ -89,3 +89,4 @@ class QualificacoesController < ApplicationController
     end
   end
 end
+

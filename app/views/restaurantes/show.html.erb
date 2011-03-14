@@ -1,29 +1,32 @@
-<%= render :partial => "titulo" %>
-<h1>Exibir Restaurante</h1>
+<h1>Exibinado Restaurante</h1>
+
 <p>
-<b>Nome: </b>
-<%= @restaurante.nome %>
+  <b>Nome:</b>
+  <%= @restaurante.nome %>
 </p>
 
 <p>
-<b>Endereço: </b>
-<%= @restaurante.endereco %>
+  <b>Endereço:</b>
+  <%= @restaurante.endereco %>
 </p>
 
 <p>
-<b>Especialidade: </b>
-<%= @restaurante.especialidade %>
+  <b>Especialidade:</b>
+  <%=h @restaurante.especialidade %>
 </p>
 
+<b>Nota média: <%= @restaurante.qualificacoes.average(:nota)%></b>
+<b>Qualicações: <%= @restaurante.qualificacoes.count%></b>
+<b>Preco médio: <%= valor_formatado(@restaurante.qualificacoes.average(:valor_gasto)) %></b>
 
-<b>Nota média: </b> <%= @restaurante.qualificacoes.average(:nota) %> <br />
-<b>Qualificações: </b> <%= @restaurante.qualificacoes.count %> <br />
-<b>Preço médio: </b> <%= valor_formatado(@restaurante.qualificacoes.average(:valor_gasto)) %> <br />
+<%= link_to "Editar", edit_restaurante_url %>
+<%= link_to "Voltar", restaurantes_url %>
 
-<%= link_to "Qualificar este restaurante", :controller => "qualificacoes",
-		:action => "new",
-		:restaurante => @restaurante %>
+<%= link_to 'Qualificar este restaurante', :controller => 'qualificacoes', :action => 'new', :restaurante => @restaurante %>
 
-<%= link_to 'Editar', { :action => 'edit', :id => @restaurante } %>
-<%= link_to 'Voltar', { :action => 'index' } %>
+<% unless @restaurante.comentarios.empty? %>
+  <%= comentarios @restaurante %>
+<% end %>
+
+<%= novo_comentario @restaurante %>
 
