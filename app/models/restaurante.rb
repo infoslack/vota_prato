@@ -3,8 +3,8 @@ class Restaurante < ActiveRecord::Base
 	validates_presence_of :endereco, :message => "deve ser preenchido"
 	validates_presence_of :especialidade, :message => "deve ser preenchido"
 
-	validates_uniqueness_of :nome, :message => "nome já cadastrado"
-	validates_uniqueness_of :endereco, :message => "endereco já cadastrado"
+	validates_uniqueness_of :nome, :message => "nome ja cadastrado"
+	validates_uniqueness_of :endereco, :message => "endereco ja cadastrado"
 
 	validate :primeira_letra_deve_ser_maiuscula
 
@@ -13,7 +13,7 @@ class Restaurante < ActiveRecord::Base
 
 	private
 	def primeira_letra_deve_ser_maiuscula
-		errors.add("nome","primeira letra deve ser maiúscula") unless nome =~ /[A-Z].*/
+		errors.add("nome","primeira letra deve ser maiuscula") unless nome =~ /[A-Z].*/
 	end
 
 end
