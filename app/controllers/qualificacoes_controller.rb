@@ -89,4 +89,3 @@ class QualificacoesController < ApplicationController
     end
   end
 end
-
